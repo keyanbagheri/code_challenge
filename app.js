@@ -52,6 +52,7 @@ $( document ).ready(function() {
     method:   'get'
     }).done(function(data){
       _.each(data["Search"], function(movie){
+        // taking each result title and returning detailed data by title
         $.ajax({
         url:      "http://www.omdbapi.com/?t=" + movie["Title"],
         dataType: 'json',
@@ -74,13 +75,3 @@ $( document ).ready(function() {
     return false;
   });
 });
-
-
-
-
-
-
-
-
-
-
