@@ -2,20 +2,27 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Movie Search</title>
+  <title>GA Movie Database</title>
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
   <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
   <script id="movie_view" type="text/template">
-  <p>Title: <%= title %><p> 
+  <div id="movie" style="border: 1px solid black; width: 75%; margin: 20px auto; padding: 20px 20px; font-family: arial;">
+    <h3><%= title %></h3>
+    <img src= <%=poster%> style= "height: 200px; width: auto; margin: 10px 10px;">
+    <h4><%= year %></h4>
+    <p>Rated: <%= rated %></p>
+    <p>Starring: <%= actors %></p>
+    <p>Plot: <%= plot %></p>
+  </div>
   </script>
   <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
-  <h1>Movie Search</h1>
+  <h1>GA Movie Database</h1>
   <form id="addMovie">
-    <input type="text" name="title">
-    <input type="submit" value="Add Movie">
+    <input type="text" name="title" placeholder="title">
+    <input type="submit" value="Search">
   </form>
   
   <div class= "movie-list"></div>

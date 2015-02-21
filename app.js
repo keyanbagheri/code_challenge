@@ -3,7 +3,6 @@ var Movie = Backbone.Model.extend({});
 
 // create a way to display each movie
 var MovieView = Backbone.View.extend({
-  tagName: 'li',
   template: _.template($('#movie_view').html()),
   render: function(){
     this.$el.html(this.template(this.model.toJSON()));
@@ -37,12 +36,6 @@ var MovieListView = Backbone.View.extend({
 $( document ).ready(function() {
   var newMovieCollection = new MovieCollection();
 
-  var newMovie = new Movie({ title: "Untitled Adam Sandler Crap"});
-  var newerMovie = new Movie({ title: "Michael Moore Talks Crap"});
-
-  newMovieCollection.add(newMovie);
-  newMovieCollection.add(newerMovie);
-
   var newMovieCollectionView = new MovieListView({collection: newMovieCollection, el: $('div.movie-list')});
 
   newMovieCollectionView.render();
@@ -58,12 +51,22 @@ $( document ).ready(function() {
     dataType: 'json',
     method:   'get'
     }).done(function(data){
-      console.log(data)
       _.each(data["Search"], function(movie){
-        var newestMovie = new Movie({
-          title: movie["Title"]});
-        console.log(movie);
-        newMovieCollection.add(newestMovie);
+        $.ajax({
+        url:      "http://www.omdbapi.com/?t=" + movie["Title"],
+        dataType: 'json',
+        method:   'get'
+        }).done(function(data){
+          var newestMovie = new Movie({
+            title: data["Title"],
+            year: data["Year"],
+            actors: data["Actors"],
+            plot: data["Plot"],
+            rated: data["Rated"],
+            poster: data["Poster"],
+          });
+          newMovieCollection.add(newestMovie);
+          });
         });
       });
 
