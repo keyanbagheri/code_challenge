@@ -35,8 +35,17 @@ var MovieListView = Backbone.View.extend({
 });
 
 $( document ).ready(function() {
-  // checking to see if its working
-  console.log("Ready Set Go!");
+  var newMovieCollection = new MovieCollection();
+
+  var newMovie = new Movie({ title: "Untitled Adam Sandler Crap", year: "2015"});
+  var newerMovie = new Movie({ title: "Michael Moore Talks Crap", year: "2015 1/2"});
+
+  newMovieCollection.add(newMovie);
+  newMovieCollection.add(newerMovie);
+
+  var newMovieCollectionView = new MovieListView({collection: newMovieCollection, el: $('div.movie-list')});
+
+  newMovieCollectionView.render();
 });
 
 
