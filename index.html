@@ -7,15 +7,15 @@
   <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
   <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
   <script id="movie_view" type="text/template">
-  <p>Title: <%= title %> - Year: <%= year %><p> 
+  <p>Title: <%= title %><p> 
   </script>
   <script type="text/javascript" src="app.js"></script>
 </head>
 <body>
   <h1>Movie Search</h1>
-  <form id="search">
-  <input id="title" type="text" placeholder="Enter a Movie Title">
-  <input type="submit" value="Search">
+  <form id="addMovie">
+    <input type="text" name="title">
+    <input type="submit" value="Add Movie">
   </form>
   
   <div class= "movie-list"></div>
