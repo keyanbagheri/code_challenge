@@ -18,6 +18,7 @@ var MovieCollection = Backbone.Collection.extend({
 
 // and a way to view our collection of movies
 var MovieListView = Backbone.View.extend({
+  tagName: 'ul',
   initialize: function(){
     this.listenTo(this.collection, 'add',
       this.render);
@@ -32,3 +33,18 @@ var MovieListView = Backbone.View.extend({
     });
   }
 });
+
+$( document ).ready(function() {
+  // checking to see if its working
+  console.log("Ready Set Go!");
+});
+
+
+
+
+
+
+
+
+
+
